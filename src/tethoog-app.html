@@ -22,7 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="my-icons.html">
 
-<dom-module id="my-app">
+<dom-module id="tethoog-app">
   <template>
     <style>
       :host {
@@ -97,10 +97,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="error-404"
             role="main">
-          <home-view name="home"></home-view>
-          <register-view name="register"></register-view>
-          <cust-account-view name="cust-account"></cust-account-view>
-          <about-view name="about"></about-view>
+          <tethoog-home-view name="home"></tethoog-home-view>
+          <tethoog-register-view name="register"></tethoog-register-view>
+          <tethoog-cust-account-view name="cust-account"></tethoog-cust-account-view>
+          <tethoog-about-view name="about"></tethoog-about-view>
           <error-404 name="error-404"></error-404>
         </iron-pages>
       </app-header-layout>
@@ -109,7 +109,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     Polymer({
-      is: 'my-app',
+      is: 'tethoog-app',
 
       properties: {
         page: {
@@ -129,8 +129,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _pageChanged: function(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl(page + '-view.html');
-        console.log("resolveUrl " + resolvedPageUrl);
+        var resolvedPageUrl = this.resolveUrl('tethoog-' + page + '-view.html');
         this.importHref(resolvedPageUrl, null, this._showPage404, true);
       },
 
